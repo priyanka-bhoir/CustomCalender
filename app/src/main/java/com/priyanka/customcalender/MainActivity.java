@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -18,8 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements CalenderAdapter.OnItemListner {
 
-    TextView monthview;
-    TextView yearview;
+    TextView pevMonthAction,MYview,nextMonthAction;
 
     RecyclerView calender;
     TextView red,green,blue;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     }
 
     private void setMonthView() {
-        monthview.setText(monthYearFromDateView(selectedDate));
+        MYview.setText(monthYearFromDateView(selectedDate));
         ArrayList<String> daysInMonth = daysInMontharray(selectedDate);
 
         CalenderAdapter calenderAdapter = new CalenderAdapter(daysInMonth,this);
@@ -79,8 +79,9 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     }
 
     private void initWidgets(){
-        monthview =findViewById(R.id.monthview);
-        yearview = findViewById(R.id.yearView);
+        pevMonthAction =findViewById(R.id.bwd);
+        MYview = findViewById(R.id.MYview);
+        nextMonthAction = findViewById(R.id.fwd);
         red = findViewById(R.id.red);
         green = findViewById(R.id.green);
         blue = findViewById(R.id.blue);
@@ -92,5 +93,23 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     @Override
     public void onItemClick(int position, String dayText) {
 
+        if (dayText.equals("")){
+
+        }
+    }
+
+    public void pevMonthAction(View view) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            selectedDate = selectedDate.minusMonths(1);
+            setMonthView();
+        }
+    }
+
+    public void nextMonthAction(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            selectedDate = selectedDate.plusMonths(1);
+            setMonthView();
+        }
     }
 }

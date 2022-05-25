@@ -15,17 +15,31 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/monthview"
+            android:id="@+id/bwd"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="<-"
+            android:gravity="center"
+            android:onClick="pevMonthAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
         <TextView
-            android:id="@+id/yearView"
+            android:id="@+id/MYview"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/fwd"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="->"
+            android:onClick="nextMonthAction"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
