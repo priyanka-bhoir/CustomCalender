@@ -18,6 +18,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements CalenderAdapter.OnItemListner {
 
+
+    /* 1.  clear the perv selected ones
+    *      2.handle the bugs */
+
     TextView pevMonthAction,MYview,nextMonthAction;
 
     RecyclerView calender;
