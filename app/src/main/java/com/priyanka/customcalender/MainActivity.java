@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     RecyclerView calender;
     TextView red,green,blue;
     private LocalDate selectedDate;
-    String Start,end;
+    String Start="",end="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,14 +92,23 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     public void onItemClick(int position, TextView dayText) {
 
         if (!dayText.getText().toString().equals("")){
-            Start = dayText.getText().toString();
-            end = dayText.getText().toString();
+            if (!end.isEmpty()){
+                Start ="";
+                end = "";
+                dayText.setBackgroundColor(Color.TRANSPARENT);
+            }
+            if (Start.isEmpty()){
+                Start = dayText.getText().toString();
+            }else {
+                end = dayText.getText().toString();
+            }
             dayText.setBackgroundColor(Color.DKGRAY);
         }
     }
 
     public void pevMonthAction(View view) {
-
+        Start ="";
+        end = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             selectedDate = selectedDate.minusMonths(1);
             setMonthView();
@@ -107,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     }
 
     public void nextMonthAction(View view) {
+        Start ="";
+        end = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             selectedDate = selectedDate.plusMonths(1);
             setMonthView();
