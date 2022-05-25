@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CustomCalender</string>
+    <string name="b"><![CDATA[<-]]></string>
+    <string name="f"><![CDATA[->]]></string>
 </resources>

@@ -1,15 +1,13 @@
 package com.priyanka.customcalender;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.GridLayout;
 import android.widget.TextView;
 
 import java.time.LocalDate;
@@ -24,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     RecyclerView calender;
     TextView red,green,blue;
     private LocalDate selectedDate;
+    String Start,end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
             selectedDate = LocalDate.now();
         }
         setMonthView();
-
 
     }
 
@@ -59,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
             int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
             for (int i= 1 ;i<=42; i++){
-                if (i<dayOfWeek || i> daysInMonth+  dayOfWeek){
+                if (i<=dayOfWeek || i> daysInMonth+  dayOfWeek){
                     daysInMonthArray.add("");
                 }else{
-                    daysInMonthArray.add(String.valueOf(i+dayOfWeek));
+                    daysInMonthArray.add(String.valueOf(i-dayOfWeek));
                 }
             }
             return daysInMonthArray;
@@ -91,10 +89,12 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
 
 
     @Override
-    public void onItemClick(int position, String dayText) {
+    public void onItemClick(int position, TextView dayText) {
 
-        if (dayText.equals("")){
-
+        if (!dayText.getText().toString().equals("")){
+            Start = dayText.getText().toString();
+            end = dayText.getText().toString();
+            dayText.setBackgroundColor(Color.DKGRAY);
         }
     }
 
@@ -111,5 +111,15 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
             selectedDate = selectedDate.plusMonths(1);
             setMonthView();
         }
+    }
+
+    public void redButton(View view) {
+
+    }
+
+    public void greenClick(View view) {
+    }
+
+    public void blueText(View view) {
     }
 }

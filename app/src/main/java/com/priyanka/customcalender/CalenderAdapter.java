@@ -3,6 +3,7 @@ package com.priyanka.customcalender;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +41,6 @@ public class CalenderAdapter extends RecyclerView.Adapter<CalenderViewHolder> {
     }
 
     public interface OnItemListner{
-        void onItemClick(int position, String dayText);
+        void onItemClick(int position, TextView dayText);
     }
 }
