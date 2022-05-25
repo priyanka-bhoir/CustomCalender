@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -125,12 +126,32 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     }
 
     public void redButton(View view) {
+        callSelection("red");
 
     }
-
     public void greenClick(View view) {
+        callSelection("green");
     }
 
     public void blueText(View view) {
+        callSelection("blue");
     }
+
+    private void callSelection(String red) {
+        if (!Start.isEmpty()&&!end.isEmpty()){
+            switch (red){
+                case "red":
+
+                    break;
+                case "green":
+                    break;
+                case "blue":
+                    break;
+            }
+        }else {
+            Toast.makeText(this,"Please select the start and end date",Toast.LENGTH_LONG);
+        }
+    }
+
+
 }
