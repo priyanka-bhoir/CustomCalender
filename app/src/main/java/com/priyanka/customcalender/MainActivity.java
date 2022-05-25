@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
     TextView red,green,blue;
     private LocalDate selectedDate;
     String Start="",end="";
+    ArrayList<TextView> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
             selectedDate = LocalDate.now();
         }
         setMonthView();
+        arrayList = new ArrayList<>();
 
     }
 
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
                 end = dayText.getText().toString();
             }
             dayText.setBackgroundColor(Color.DKGRAY);
+            arrayList.add(dayText);
         }
     }
 
@@ -141,11 +144,25 @@ public class MainActivity extends AppCompatActivity implements CalenderAdapter.O
         if (!Start.isEmpty()&&!end.isEmpty()){
             switch (red){
                 case "red":
-
+                    for (int i=0;i< arrayList.size();i++){
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            arrayList.get(i).setBackgroundColor(getResources().getColor(R.color.red));
+                        }
+                    }
                     break;
                 case "green":
+                    for (int i=0;i< arrayList.size();i++){
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            arrayList.get(i).setBackgroundColor(getResources().getColor(R.color.greeen));
+                        }
+                    }
                     break;
                 case "blue":
+                    for (int i=0;i< arrayList.size();i++){
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            arrayList.get(i).setBackgroundColor(getResources().getColor(R.color.blue));
+                        }
+                    }
                     break;
             }
         }else {
